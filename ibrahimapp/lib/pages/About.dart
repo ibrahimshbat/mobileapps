@@ -27,7 +27,10 @@ class _AboutState extends State<About> {
      this.time = wt.time;
    });
     print("TimeThis = " + this.time);
-    Navigator.pushNamed(context, "/Home");
+    Navigator.pushReplacementNamed(context, "/Home", arguments: {
+      'time': this.time,
+      'url': wt.url,
+    });
   }
   @override
   Widget build(BuildContext context) {
