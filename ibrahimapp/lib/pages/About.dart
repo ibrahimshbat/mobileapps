@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:ibrahimapp/services/WorldTime.dart';
+import 'package:intl/intl.dart';
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -26,11 +27,11 @@ class _AboutState extends State<About> {
    setState(() {
      this.time = wt.time;
    });
-    print("TimeThis = " + this.time);
+   // print("TimeThis = " + this.time);
     Navigator.pushReplacementNamed(context, "/Home", arguments: {
       'time': this.time,
       'url': wt.url,
-    });
+   });
   }
   @override
   Widget build(BuildContext context) {

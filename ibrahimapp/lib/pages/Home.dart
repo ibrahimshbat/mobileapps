@@ -13,22 +13,33 @@ class _HomeState extends State<Home> {
     print(data);
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            FlatButton.icon(
-                onPressed: (){
-                  Navigator.pushNamed(context, "/About");
-                },
-                icon: Icon(Icons.info),
-                label: Text("About Me")
-            ),
-            Text(
-              data['url'],
-            ),
-            Text(
-              data['time'],
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(100.0),
+          child: Column(
+            children: <Widget>[
+              FlatButton.icon(
+                  onPressed: (){
+                    Navigator.pushNamed(context, "/About");
+                  },
+                  icon: Icon(Icons.edit_location),
+                  label: Text("Location")
+              ),
+              Text(
+                data['url'],
+                style: TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+              SizedBox(height: 60,),
+              Text(
+                data['time'],
+                style: TextStyle(
+                  fontSize: 40.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          ),
         )
       ),
     );
