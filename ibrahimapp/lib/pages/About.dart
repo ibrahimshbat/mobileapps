@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'dart:convert';
+import 'package:ibrahimapp/services/WorldTime.dart';
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -8,24 +11,27 @@ class _AboutState extends State<About> {
   @override
   String name = "Ibrahim Elsanosi";
   int age = 43;
+  WorldTime wt= new WorldTime(url: "America/Argentina/Mendoza");
+  String time = "Coming....";
 
-  void getinfo() async{
-    await Future.delayed(Duration(seconds: 5), (){
-      print("Hello this is info");
-    });
-    await Future.delayed(Duration(seconds: 2), (){
-      print("sync1");
-    });
-    print("Hello1");
-
-  }
-  void initState() {
+    void initState(){
     // TODO: implement initState
     super.initState();
-    getinfo();
+    setup();
+  }
+
+  void setup() async{
+    await wt.getTime();
+   print(wt.time);
+   setState(() {
+     this.time = wt.time;
+   });
+    print("TimeThis = " + this.time);
+    Navigator.pushNamed(context, "/Home");
   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
@@ -54,6 +60,9 @@ class _AboutState extends State<About> {
               },
               icon: Icon(Icons.navigate_next),
               label: Text("Next"),
+          ),
+          Text(
+            "Time = " + this.time,
           )
         ],
       ),
