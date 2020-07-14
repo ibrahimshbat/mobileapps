@@ -5,7 +5,7 @@ import 'package:ibrahimapp/pages/Resume.dart';
 import 'package:ibrahimapp/pages/About.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/Home',
+  initialRoute: '/About',
   routes: {
     '/': (context) => Loading(),
     '/Home': (context) => Home(),

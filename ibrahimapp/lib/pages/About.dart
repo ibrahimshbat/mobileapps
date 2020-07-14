@@ -3,6 +3,7 @@ import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:ibrahimapp/services/WorldTime.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 class About extends StatefulWidget {
   @override
   _AboutState createState() => _AboutState();
@@ -12,7 +13,7 @@ class _AboutState extends State<About> {
   @override
   String name = "Ibrahim Elsanosi";
   int age = 43;
-  WorldTime wt= new WorldTime(url: "America/Argentina/Mendoza");
+  WorldTime wt= new WorldTime(url: "Africa/Tunis");
   String time = "Coming....";
 
     void initState(){
@@ -27,11 +28,13 @@ class _AboutState extends State<About> {
    setState(() {
      this.time = wt.time;
    });
-   // print("TimeThis = " + this.time);
-    Navigator.pushReplacementNamed(context, "/Home", arguments: {
+   Navigator.pushReplacementNamed(context, "/Home", arguments: {
       'time': this.time,
       'url': wt.url,
+       'isDayTime':wt.isDayTime,
    });
+    print("TimeThis = " + this.time);
+//
   }
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,11 @@ class _AboutState extends State<About> {
           ),
           Text(
             "Time = " + this.time,
-          )
+          ),
+       SpinKitFadingCircle(
+        color: Colors.redAccent,
+        size: 80.0,
+      )
         ],
       ),
 

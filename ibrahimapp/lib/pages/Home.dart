@@ -10,11 +10,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
+    print(data['isDayTime']);
     print(data);
+    String image = data['isDayTime']?"3.jpg":"2.jpg";
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(100.0),
+
           child: Column(
             children: <Widget>[
               FlatButton.icon(
