@@ -13,7 +13,7 @@ class _AboutState extends State<About> {
   @override
   String name = "Ibrahim Elsanosi";
   int age = 43;
-  WorldTime wt= new WorldTime(url: "Africa/Tunis");
+  WorldTime wt= new WorldTime(url: "Africa/Tunis", location: "Tunis", flag: "???");
   String time = "Coming....";
 
     void initState(){

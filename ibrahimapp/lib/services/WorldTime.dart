@@ -2,11 +2,13 @@ import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:intl/intl.dart';
 class WorldTime {
+  String location;
+  String flag;
   String time ;
   String url;
   bool isDayTime;
 
-  WorldTime({this.url});
+  WorldTime({this.url, this.location, this.flag});
 
   Future<void> getTime() async{
     Response dataRespo;
@@ -18,7 +20,7 @@ class WorldTime {
        String offset = data['utc_offset'].substring(1,3);
        DateTime now = DateTime.parse(datetime);
        now = now.add(Duration(hours: int.parse(offset)));
-       isDayTime = now.hour >= 6 && now.hour <= 20?true:false;
+       isDayTime = now.hour >= 6 && now.hour <= 18?true:false;
        time = DateFormat.jm().format(now);
        print("Time ------ $time");
        return time;
