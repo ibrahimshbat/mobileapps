@@ -17,6 +17,19 @@ class _LocationState extends State<Location> {
     WorldTime(url: 'Asia/Seoul', location: 'Seoul', flag: 'south_korea.png'),
     WorldTime(url: 'Asia/Jakarta', location: 'Jakarta', flag: 'indonesia.png'),
   ];
+
+  void updateTime(index) async{
+    WorldTime newwt = locations[index];
+    await newwt.getTime();
+    Navigator.pop(context, {
+      'time': newwt.time,
+      'url': newwt.url,
+      'isDayTime':newwt.isDayTime,
+      'location':newwt.location,
+      'flag':newwt.flag,
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +46,9 @@ class _LocationState extends State<Location> {
               padding: const EdgeInsets.symmetric(vertical: 1.0,horizontal: 5.0),
               child: Card(
               child: ListTile(
-              onTap: (){},
+              onTap: (){
+                updateTime(index);
+              },
                title: Text(locations[index].location),
                 leading: CircleAvatar(
                     backgroundImage: AssetImage('assets/${locations[index].flag}'),),

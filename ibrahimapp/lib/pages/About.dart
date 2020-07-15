@@ -32,6 +32,7 @@ class _AboutState extends State<About> {
       'time': this.time,
       'url': wt.url,
        'isDayTime':wt.isDayTime,
+       'location':wt.location,
    });
     print("TimeThis = " + this.time);
 //
