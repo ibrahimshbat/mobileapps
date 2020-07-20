@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 //import 'package:http/http.dart';
 import 'package:weather/weather_library.dart';
 
-class WeatherData{
+class WeatherData {
   Weather w;
 
-  Future<void> getTime() async {
+  Future<void> getWweather() async {
     WeatherFactory wf = new WeatherFactory("59c75b19da49aede452fe89cdbe2d695");
-    w = await wf.currentWeatherByCityName("Newcastle Upon Tyne");
-    print(w.temperature.celsius);
-    print(w.temperature.fahrenheit);
-    print(w.temperature.kelvin);
+    try {
+      w = await wf.currentWeatherByCityName("Paris");
+      print(w.temperature.celsius);
+      print(w.country);
+      print(w.date);
+      return w;
+    } catch (e) {
+      print("catch erro  $e");
+      //time = "API Problem";
+    }
+
     /* Response dataRespo;
     try{
       print("Time ------------------------");
