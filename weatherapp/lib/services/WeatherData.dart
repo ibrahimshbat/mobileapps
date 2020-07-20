@@ -8,7 +8,7 @@ class WeatherData {
   Future<void> getWweather() async {
     WeatherFactory wf = new WeatherFactory("59c75b19da49aede452fe89cdbe2d695");
     try {
-      w = await wf.currentWeatherByCityName("Paris");
+      w = await wf.currentWeatherByCityName("Roma");
       print(w.temperature.celsius);
       print(w.country);
       print(w.date);
