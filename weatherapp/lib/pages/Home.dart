@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
       body: Column(
         children: <Widget>[
           Text(
-            $this.celsius,
+            this.celsius.toString(),
           )
         ],
       ),
