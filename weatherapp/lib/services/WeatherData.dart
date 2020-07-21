@@ -4,11 +4,13 @@ import 'package:weather/weather_library.dart';
 
 class WeatherData {
   Weather w;
+  WeatherData(){
 
+  }
   Future<void> getWweather() async {
     WeatherFactory wf = new WeatherFactory("59c75b19da49aede452fe89cdbe2d695");
     try {
-      w = await wf.currentWeatherByCityName("Roma");
+      w = await wf.currentWeatherByCityName("Naples");
       print(w.temperature.celsius);
       print(w.country);
       print(w.date);
