@@ -11,6 +11,7 @@ class _HomeState extends State<Home> {
   WeatherData wd = new WeatherData();
   Weather w;
   double celsius;
+  int intweather;
   void initState(){
     // TODO: implement initState
     super.initState();
@@ -22,6 +23,7 @@ class _HomeState extends State<Home> {
     setState(() {
       this.w = wd.w;
       this.celsius = this.w.temperature.celsius;
+      this.intweather = this.celsius.round();
     });
 //    Navigator.pushReplacementNamed(context, "/Home", arguments: {
 //      'time': this.time,
@@ -39,14 +41,13 @@ class _HomeState extends State<Home> {
         title: Text('Weather Forecast'),
         centerTitle: true,
       ),
-      body: Column(
-        children: <Widget>[
-          Text(
-            this.celsius.toString(),
-          )
-        ],
+      body: Center(
+          child:Text(
+            intweather.toString(),
+            textAlign: TextAlign.center,
+          ),
       ),
-    );
+      );
   }
 }
 
