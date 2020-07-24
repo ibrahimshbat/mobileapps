@@ -11,11 +11,11 @@ class WeatherData {
     WeatherFactory wf = new WeatherFactory("59c75b19da49aede452fe89cdbe2d695");
     try {
       w = await wf.currentWeatherByCityName("Naples");
-      print(w.temperature.celsius);
-      print("cloudiness $w.cloudiness");
+      //print(w.temperature.celsius);
+      //print("cloudiness $w.cloudiness");
 
-      print(w.country);
-      print(w.date);
+      //print(w.country);
+      //print(w.date);
       return w;
     } catch (e) {
       print("catch erro  $e");

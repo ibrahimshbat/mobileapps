@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
   }
   void setup() async{
     await wd.getWweather();
+    print("////////");
     print(wd.w);
     setState(() {
       this.w = wd.w;
@@ -53,9 +54,22 @@ class _HomeState extends State<Home> {
           child: Column(
             children: <Widget>[
               Center(
+                child:Text(
+                  '${w.date.hour}:${w.date.minute}',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+              Center(
                   child:Text(
                     intweather.toString(),
-                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold
+                    ),
                   ),
               ),
             ],
