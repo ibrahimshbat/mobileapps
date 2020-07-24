@@ -41,17 +41,25 @@ class _HomeState extends State<Home> {
         title: Text('Weather Forecast'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 200.0, 0, 0),
-        child: Column(
-          children: <Widget>[
-            Center(
-                child:Text(
-                  intweather.toString(),
-                  textAlign: TextAlign.center,
-                ),
-            ),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images.jpg'),
+              fit: BoxFit.cover,
+            )
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0,200,0,0),
+          child: Column(
+            children: <Widget>[
+              Center(
+                  child:Text(
+                    intweather.toString(),
+                    textAlign: TextAlign.center,
+                  ),
+              ),
+            ],
+          ),
         ),
       ),
       );

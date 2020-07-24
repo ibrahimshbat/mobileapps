@@ -12,6 +12,8 @@ class WeatherData {
     try {
       w = await wf.currentWeatherByCityName("Naples");
       print(w.temperature.celsius);
+      print("cloudiness $w.cloudiness");
+
       print(w.country);
       print(w.date);
       return w;
