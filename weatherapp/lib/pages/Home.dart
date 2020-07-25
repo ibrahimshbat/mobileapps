@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/services/DateDayTime.dart';
 import 'package:weatherapp/services/WeatherData.dart';
 import 'package:weather/weather_library.dart';
+import 'dart:convert';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -14,6 +17,9 @@ class _HomeState extends State<Home> {
   int hour;
   int minute;
   int intweather;
+  DayTime dayTime;
+  dynamic dayData =
+      '{ "1" : "Mon", "2" : "Tue", "3" : "Wed", "4" : "Thur", "5" : "Fri", "6" : "Sat", "7" : "Sun" }';
   void initState(){
     // TODO: implement initState
     super.initState();
@@ -29,6 +35,13 @@ class _HomeState extends State<Home> {
       this.intweather = this.celsius.round();
       this.hour = this.w.date.hour;
       this.minute = this.w.date.minute;
+      var findData = DateTime.parse(this.w.date.toString());
+      print(".......");
+      print(this.w.date.toString());
+      print(findData.hour);
+      print(findData.minute);
+      print(jsonDecode(dayData)['2']);
+      this.dayTime = new DayTime(jsonDecode(dayData)['${findData.weekday}'], findData.hour, findData.minute);
     });
 //    Navigator.pushReplacementNamed(context, "/Home", arguments: {
 //      'time': this.time,
@@ -59,22 +72,60 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Center(
                 child:Text(
-                  '$hour:$minute',
+                  'City: ${this.w.areaName}',
                   style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
                   ),
                 ),
               ),
               SizedBox(height: 20.0),
               Center(
-                  child:Text(
-                    intweather.toString(),
-                    style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold
-                    ),
+                child:Text(
+                  '${this.dayTime.dayOfWeek}  ${this.dayTime.hour}:${this.dayTime.minute}',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
                   ),
+                ),
+              ),
+              SizedBox(height: 20.0),
+
+              Center(
+                child:Text(
+                  intweather.toString(),
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              Center(
+                child:Text(
+                  '${this.w.weatherDescription}',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              Center(
+                child:Text(
+                  'Humidity: ${this.w.humidity.round()}%',
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+              Center(
+                child:Text(
+                  'Wind: ${this.w.windSpeed} mph',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
               ),
             ],
           ),

@@ -5,6 +5,6 @@ class DayTime{
   int hour;
   int minute;
 
-  DayTime();
+  DayTime(this.dayOfWeek, this.hour, this.minute);
 
 }
