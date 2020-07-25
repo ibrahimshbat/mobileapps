@@ -11,6 +11,8 @@ class _HomeState extends State<Home> {
   WeatherData wd = new WeatherData();
   Weather w;
   double celsius;
+  int hour;
+  int minute;
   int intweather;
   void initState(){
     // TODO: implement initState
@@ -25,6 +27,8 @@ class _HomeState extends State<Home> {
       this.w = wd.w;
       this.celsius = this.w.temperature.celsius;
       this.intweather = this.celsius.round();
+      this.hour = this.w.date.hour;
+      this.minute = this.w.date.minute;
     });
 //    Navigator.pushReplacementNamed(context, "/Home", arguments: {
 //      'time': this.time,
@@ -55,7 +59,7 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Center(
                 child:Text(
-                  '${w.date.hour}:${w.date.minute}',
+                  '$hour:$minute',
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold
