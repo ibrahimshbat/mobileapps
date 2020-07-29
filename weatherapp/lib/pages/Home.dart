@@ -3,6 +3,7 @@ import 'package:weatherapp/services/DateDayTime.dart';
 import 'package:weatherapp/services/WeatherData.dart';
 import 'package:weather/weather_library.dart';
 import 'dart:convert';
+import 'package:flutter_country_picker/flutter_country_picker.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,6 +19,7 @@ class _HomeState extends State<Home> {
   int minute;
   int intweather;
   DayTime dayTime;
+  Country seleted_country;
   dynamic dayData =
       '{ "1" : "Mon", "2" : "Tue", "3" : "Wed", "4" : "Thur", "5" : "Fri", "6" : "Sat", "7" : "Sun" }';
   void initState(){
@@ -125,6 +127,22 @@ class _HomeState extends State<Home> {
                     fontSize: 22,
                     fontWeight: FontWeight.bold
                   ),
+                ),
+              ),
+              new Center(
+                child: CountryPicker(
+                  dense: false,
+                  showFlag: true,  //displays flag, true by default
+                  showDialingCode: false, //displays dialing code, false by default
+                  showName: true, //displays country name, true by default
+                  showCurrency: false, //eg. 'British pound'
+                  showCurrencyISO: true, //eg. 'GBP'
+                  onChanged: (Country country) {
+                    setState(() {
+                      seleted_country = country;
+                    });
+                  },
+                  selectedCountry: seleted_country,
                 ),
               ),
             ],
